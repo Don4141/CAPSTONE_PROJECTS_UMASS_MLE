@@ -80,7 +80,7 @@ Step-by-step guide:
 
  1) Prepare files and environment:
 
-Organize PDB files: To run Foldx, we need to supply the PDB file of the gene or protein name under study, and for each PDB file, we have to create a text file listing all the mutations to analyze. NB: Test file should be in a format that Foldx can process. 
+- Organize PDB files: To run Foldx, we need to supply the PDB file of the gene or protein name under study, and for each PDB file, we have to create a text file listing all the mutations to analyze. NB: Test file should be in a format that Foldx can process. 
 
 The raw dataset provides us with a list of all the protein names they convered. To manually download all the protein structures from the AlphaFold Database or from Uniprot using the protein names is going to be tiresome. 
 
