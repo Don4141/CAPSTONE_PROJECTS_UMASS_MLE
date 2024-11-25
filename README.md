@@ -72,3 +72,13 @@ The foldx5_1Linux64.zip is a .zip file. Extract the file on a Linux system like 
    
           echo 'export PATH=$PATH:$HOME/foldx' >> ~/.bashrc
          
+The study aims at accessing the impact of mutations on the stability of proteins using multiple PDB files.
+
+We will automate the process by creating a systematic workflow that utilizes Foldx. 
+
+Step-by-step guide:
+
+ 1) Prepare files and environment:
+
+#Organize PDB files: To run Foldx, we need to supply the PDB file of the gene or protein name under study, and for each PDB file, we have to create a text file listing all the mutations to analyze. NB: Test file should be in a format that Foldx can process. 
+The raw dataset provides us with a list of all the protein names they convered. To manually download all the protein structures from the AlphaFold Database or from Uniprot using the protein names is going to be tiresome. We will automate the download process to do this in a single run. But first, we to have a list of the protein identifiers. AlphaFold uses Uniprot IDs for indexing protein structures, hence, we have to resolve the list of protein names to Uniprot Ids, which can be used to download structures from AlphaFold databases. Let's automate the process with a Python script. Create a text file and list the protein names, one name per line. Name file as protein_names.txt or as you prefer. Use the Python script to fetch the uniprot IDs associated with the list of protein names. Install requests library if not already.
