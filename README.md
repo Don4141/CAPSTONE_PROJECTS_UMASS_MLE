@@ -16,8 +16,10 @@ Example: wget https://foldxsuite.crg.eu/system/files/foldx5Linux64_1.zip
 
 2) Extract and Install FoldX:
 The foldx5_1Linux64.zip is a .zip file. Extract the file on a Linux system like Ubuntu as follows:
+
       1: Install Unzip Tool: Ensure you have unzip utility installed on your system. You can install it using apt if it's not already installed:
           sudo apt install unzip
+   
       2: Extract the ZIP File: Create another folder in your home directory (e.g FoldxFiles).
          #Navigate to the directory containing the downloaded .zip file, and use the unzip command to extract it as follows:
          cd ~/Downloads  #wherever your download folder is
