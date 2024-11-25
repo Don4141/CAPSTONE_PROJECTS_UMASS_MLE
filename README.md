@@ -1,4 +1,5 @@
 #Capstone projects for Machine Learning Engineering and AI bootcamp at UMASS Global
+
 The first tool to install is FoldX. This is a computational tool widely used in the field of bioinformatics and computational biology for analyzing the stability of proteins and their complexes. 
 
 Foldx enables researchers to study the effects of mutations on the stability of protein structures, predict changes in the free energy of proteins upon mutation (ΔΔG), and assess the impact of 
@@ -19,12 +20,12 @@ Extract and install Foldx and ensure that it is correctly installed on your syst
 Steps:
 
 1) Visit the FoldX official FoldX website to get the latest version. You need need to register or request access per their distribution policy.
-2) 
+ 
 Choose the appropriate version for Linux from the download link you will receive from them. Ensure you download the Linux binary. Create folder in your home directory (e.g Downloads) and navigate into it and download Foldx as follows.
 
 Example: wget https://foldxsuite.crg.eu/system/files/foldx5Linux64_1.zip
 
-4) Extract and Install FoldX:
+2) Extract and Install FoldX:
 
 The foldx5_1Linux64.zip is a .zip file. Extract the file on a Linux system like Ubuntu as follows:
 
