@@ -80,7 +80,9 @@ Step-by-step guide:
 
  1) Prepare files and environment:
 
-- Organize PDB files: To run Foldx, we need to supply the PDB file of the gene or protein name under study, and for each PDB file, we have to create a text file listing all the mutations to analyze. NB: Test file should be in a format that Foldx can process. 
+- Organize PDB files:
+
+To run Foldx, we need to supply the PDB file of the gene or protein name under study, and for each PDB file, we have to create a text file listing all the mutations to analyze. NB: Test file should be in a format that Foldx can process. 
 
 The raw dataset provides us with a list of all the protein names they convered. To manually download all the protein structures from the AlphaFold Database or from Uniprot using the protein names is going to be tiresome. 
 
@@ -97,3 +99,16 @@ The output of python script is a structured text or a list of key-value-like sta
 Let's create a Python script to parse the structured text file. The script will generate three separate files that will contain the gene names, accession numbers/Uniprot IDs, and Uniprot entry names. 
 
 Let's follow up with another python script that will read the accession numbers/Uniprot IDs from an input file and download their AlphaFold predicted structures from AlphaFold database hosted by the European Bioinformatics Institute (EBI).
+
+- Create mutation files for Foldx:
+
+For each PDB file, we need to create a text file that lista all the mutations under study. The mutations should be structured to match FoldX's expectations. Typically, the format include the chain idenitfier along with the residue number and the mutation.
+
+Entries in the mutation file should follow this format: [Chain][Residue Number][Mutation]
+
+The mutation file format requires the chain identifier for each mutation. The raw dataset did not include this information, hence, we need to create a script that extract this IDs associated with the mutations using their PDB_IDs, reference residue, position and mutant residue.
+
+Update the mutation file with the chain Ids. You can use the bash script for this purpose.
+
+
+
