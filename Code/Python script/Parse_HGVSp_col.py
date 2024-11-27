@@ -33,7 +33,7 @@ def process_location_column(input_file, out_file):
     df.to_csv(out_file, index=False, sep='\t')
 
 if __name__ == "__main__":
-    input_file = "./SIGMA.txt"  # Path to your input file
-    out_file = "./processed_SIGMA.txt"  # Path to save the processed file
+    input_file = "./subset_dt.txt"  # Path to your input file
+    out_file = "./processed_subset_dt.txt"  # Path to save the processed file
 
     process_location_column(input_file, out_file)
