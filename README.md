@@ -1,9 +1,20 @@
 #Capstone projects for Machine Learning Engineering and AI bootcamp at UMASS Global
 
+The original dataset from SIGMA publication has 7 columns, namely HGVSc, HGVSp, Location, SYMBOL, Laste Evaluated, Train_Test Lable, and Class. The first two columns provides information about the variants under study including the coding DNA sequence of variants, and 
+
+the protein-level confidence,respectively. The third column is the genomic location of the variants, followed by the gene names associated with the variants. The last three columns include the dates the variants were recorded, the context in which the data was used and 
+
+the clinical significance of each of the variants, respectively. The columns of interest in this study include HGVSp, the gene names, the dataset-classifications and their clinical significance. 
+
+Let's extract the reference residues, their positions within their protein sequences, and their mutant/alternative residues from HGVSp column. We will append the new columns to the same dataset. Use the python script parse_HGVSp_col.py for this purpose.
+
+Next, let's create a script that will split the output of the above script into four separate text files based on the dataset-classifications and clinical significance of the variants. We will create a bash script that will read the input text file, check the 
+
+conditions for each row, and then append the row to the appropriate out file based on its classification and clinical significance values. 
+
 The first tool to install is FoldX. This is a computational tool widely used in the field of bioinformatics and computational biology for analyzing the stability of proteins and their complexes. 
 
-Foldx enables researchers to study the effects of mutations on the stability of protein structures, predict changes in the free energy of proteins upon mutation (ΔΔG), and assess the impact of 
-these mutations on protein function. 
+Foldx enables researchers to study the effects of mutations on the stability of protein structures, predict changes in the free energy of proteins upon mutation (ΔΔG), and assess the impact of these mutations on protein function. 
 
 Example of some key aspects of Foldx is Protein Stability Prediction.
 
