@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Define the input file path
-input_file="./processed_SIGMA.txt"
+input_file="./processed_subset_dt.txt"
 
 # Define the output files for each category
-training_benign="./SplitSIGMA/training_benign.txt"
-training_pathogenic="./SplitSIGMA/training_pathogenic.txt"
-test_benign="./SplitSIGMA/test_benign.txt"
-test_pathogenic="./SplitSIGMA/test_pathogenic.txt"
+training_benign="./SplitData/training_benign.txt"
+training_pathogenic="./SplitData/training_pathogenic.txt"
+test_benign="./SplitData/test_benign.txt"
+test_pathogenic="./SplitData/test_pathogenic.txt"
 
 # Header extraction and write headers to each file
 header=$(head -1 "$input_file")
