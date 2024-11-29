@@ -19,8 +19,8 @@ echo "$header" > "$test_pathogenic"
 # Read the input file line by line excluding the header
 tail -n +2 "$input_file" | while IFS= read -r line; do
     # Determine the category and write the line to the appropriate file
-    train_test_label=$(echo "$line" | awk -F'\t' '{print $3}') # Adjust the column number if necessary
-    class=$(echo "$line" | awk -F'\t' '{print $4}')            # Adjust the column number if necessary
+    train_test_label=$(echo "$line" | awk -F'\t' '{print $3}') 
+    class=$(echo "$line" | awk -F'\t' '{print $4}')            
 
     if [[ "$train_test_label" == "Training" && "$class" == "Benign" ]]; then
         echo "$line" >> "$training_benign"
