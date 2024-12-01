@@ -7,9 +7,9 @@ output_file="./TrainBenign.txt"
 # Process the file
 awk -F, '{
     # Start output with the second column
-    out = $2;
+    out = $4;
     # Loop through the remaining columns and append them to 'out'
-    for (i = 3; i <= NF; i++) {
+    for (i = 5; i <= NF; i++) {
         out = out "," $i;
     }
     # Print the output line
