@@ -8,9 +8,9 @@ the clinical significance of each of the variants, respectively. The columns of 
 
 Let's extract the reference residues, their positions within their protein sequences, and their mutant/alternative residues from HGVSp column. We will append the new columns to the same dataset. Use the python script parse_HGVSp_col.py for this purpose.
 
-Now, we don't need the HGVSp column anymore, let's write a bash script to remove this column. Use the bash script remove_HGVSp_col.sh
+Now, we don't need the HGVSp, Train_Test Lable and Class column anymore, let's write a bash script to remove this column. Use the bash script remove_HGVSp_col.sh
 
-Next, let's create a script that will split the output of the above script into four separate text files based on the dataset-classifications and clinical significance of the variants. We will create a bash script that will read the input text file, check the 
+Next, let's create a script that will split the output of the above script into four separate text files (TestBenign, TestPathogenic, TrianBenign, TrainPathogenic) based on the dataset-classifications and clinical significance of the variants. We will create a bash script that will read the input text file, check the 
 
 conditions for each row, and then append the row to the appropriate out file based on its classification and clinical significance values. 
 
@@ -113,9 +113,15 @@ Let's create a Python script to parse the structured text file. The script will 
 
 Let's follow up with another python script that will read the accession numbers/Uniprot IDs from an input file and download their AlphaFold predicted structures from AlphaFold database hosted by the European Bioinformatics Institute (EBI).
 
-- Create mutation files for Foldx:
+- Create mutation files and run Foldx:
 
-For each PDB file, we need to create a text file that lista all the mutations under study. The mutations should be structured to match FoldX's expectations. Typically, the format include the chain idenitfier along with the residue number and the mutation.
+Since we are interested in the energy difference between the reference residues (WT) and their variants, we will run FoldX with the BuildModel command. BuildModel requires a mutant-file (enlisting the mutations) to run. 
+
+FoldX operates two ways of defining mutations, that's Mutant file or Individual list mode. We will use Individual list mode as the Mutant file mode requires the sequences of the mutants and is ideal if studying several mutations in a protein.
+
+In Individual list mode, the file individual_list.txt contains the mutations we want to make, in the classical FoldX format (WT residue, chain, residue number, mutant residue). It is required than the name of the file containing the mutations starts by individual_list. Don't include any space on the mutation lines.
+
+For each PDB file, we need to create a text file that list all the mutations under study. The mutations should be structured to match FoldX's expectations. Typically, the format include the chain idenitfier along with the residue number and the mutation.
 
 Entries in the mutation file should follow this format: [Chain][Residue Number][Mutation]
 
