@@ -4,15 +4,11 @@ The original dataset from SIGMA publication has 7 columns, namely HGVSc, HGVSp, 
 
 the protein-level confidence,respectively. The third column is the genomic location of the variants, followed by the gene names associated with the variants. The last three columns include the dates the variants were recorded, the context in which the data was used and 
 
-the clinical significance of each of the variants, respectively. The columns of interest in this study include HGVSp, the gene names, the dataset-classifications and their clinical significance. 
+the clinical significance of each of the variants, respectively. The columns of interest in this study include HGVSp, the dataset-classifications, their clinical significance, and the gene names. 
 
 Let's extract the reference residues, their positions within their protein sequences, and their mutant/alternative residues from HGVSp column. We will append the new columns to the same dataset. Use the python script parse_HGVSp_col.py for this purpose.
 
-Now, we don't need the HGVSp, Train_Test Lable and Class column anymore, let's write a bash script to remove this column. Use the bash script remove_HGVSp_col.sh
-
-Next, let's create a script that will split the output of the above script into four separate text files (TestBenign, TestPathogenic, TrianBenign, TrainPathogenic) based on the dataset-classifications and clinical significance of the variants. We will create a bash script that will read the input text file, check the 
-
-conditions for each row, and then append the row to the appropriate out file based on its classification and clinical significance values. 
+Now, we don't need the HGVSp, Train_Test Lable and Class column anymore, let's write a bash script to remove this column. Use the bash script remove_HGVSp_col.sh 
 
 The first tool to install is FoldX. This is a computational tool widely used in the field of bioinformatics and computational biology for analyzing the stability of proteins and their complexes. 
 
@@ -119,15 +115,29 @@ Since we are interested in the energy difference between the reference residues 
 
 FoldX operates two ways of defining mutations, that's Mutant file or Individual list mode. We will use Individual list mode as the Mutant file mode requires the sequences of the mutants and is ideal if studying several mutations in a protein.
 
-In Individual list mode, the file individual_list.txt contains the mutations we want to make, in the classical FoldX format (WT residue, chain, residue number, mutant residue). It is required than the name of the file containing the mutations starts by individual_list. Don't include any space on the mutation lines.
+In Individual list mode, the file individual_list.txt contains the mutations we want to make, in the classical FoldX format (WT residue, chain, residue position, mutant residue). It is required than the name of the file containing the mutations starts by individual_list. Don't include any space on the mutation lines.
 
-For each PDB file, we need to create a text file that list all the mutations under study. The mutations should be structured to match FoldX's expectations. Typically, the format include the chain idenitfier along with the residue number and the mutation.
+The mutation file format requires the chain identifier for each mutation. The dataset we have prepared so far does not include this information. Let's create a script that extract these IDs associated with the mutations. 
 
-Entries in the mutation file should follow this format: [Chain][Residue Number][Mutation]
+This requires a different file format. We will create another version of the dataset we are working with to include a PDB_IDs, reference residue, position and mutant residue columns. We will name this file compile.txt. The reference residue, position and mutant residue columns can be extracted from the dataset but we have to create the PDB_IDs of the mutations. 
 
-The mutation file format requires the chain identifier for each mutation. The raw dataset did not include this information, hence, we need to create a script that extract this IDs associated with the mutations using their PDB_IDs, reference residue, position and mutant residue.
+The PDBs of the proteins since they are alphafold predicted structiures should follow this format: AF-${identifier}-F1-model_v1, where identifier is the accession number of the protein/gene.
 
-Update the mutation file with the chain Ids. You can use the bash script for this purpose.
+The key-value like ouput statements from the Uniprot output file include genes and their accession numbers. The new dataset we have created also has genes as one of the columns. 
 
+Let's create a bash script that process the key-value statements from the Uniprot output to extract the gene names and accession numbers then cross-reference these genes with the compile dataset to identify shared entries. 
 
+For matching genes, it will generate a list of PDB IDs in the format AF-${identifier}-F1-model_v1.pdb and append this to the dataset. Use the script compile_pdb_Ids.sh for this purpose.
+
+Let's create a new version of the compile dataset and name it compile_v2.txt. Reorder the columns to match the following order: PDB_ID, reference residue, position, and mutant residue. Trim white spaces around column values. 
+
+Use the script extract_ChainID.py to extract the chain IDs. Add these chain IDs as a new column in the compile dataset using the script add_chain_col.sh. Also, append a new column containing semi-colons as placeholders or delimiters. 
+
+The format of the rows should follow the format: [AF-Q00266-F1-model_v1   P       A       357     L       ;]
+
+Next, let's create a bash script to split the compile dataset into four separate text files: TestBenign, TestPathogenic, TrianBenign, TrainPathogenic. 
+
+The script will read the compile txt file as input file, check the conditions for each row based on the dataset-classification and clinical significance columns, and then append the row to the appropriate output file. 
+
+Rows will be classified based on the dataset labels (Train or Test) and clinical significance (Benign or Pathogenic).
 
