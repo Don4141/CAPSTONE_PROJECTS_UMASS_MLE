@@ -99,7 +99,7 @@ To run Foldx, we need to supply the PDB file of the gene or protein name under s
 
 The raw dataset provides us with a list of all the protein names they convered. To manually download all the protein structures from the AlphaFold Database or from Uniprot using the protein names is going to be tiresome. 
 
-We will automate the download process to do this in a single run. But first, we to have a list of the protein identifiers. 
+We will automate the download process to do this in a single run. But first, we need to have a list of the protein identifiers. 
 
 AlphaFold uses Uniprot IDs for indexing protein structures, hence, we have to resolve the list of protein names to Uniprot Ids, which can be used to download structures from AlphaFold databases. 
 
