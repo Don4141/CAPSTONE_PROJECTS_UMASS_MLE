@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define the input and output file paths
-input_file="./TrainBenign.txt"
-output_file="./TrainBenign_out2.txt"
+input_file="./compile.txt"
+output_file="./data/compile.txt"
 
 awk -F, -v OFS=',' '
 {
