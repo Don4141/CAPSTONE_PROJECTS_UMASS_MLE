@@ -50,6 +50,6 @@ def process_mutations(input_file, pdb_dir):
                 print(f"File not found: {pdb_file}")
 
 if __name__ == "__main__":
-    input_csv = "./TestBenign.txt"  # This txt should contain columns: PDB_ID, Position, Reference_Residue, Mutant_Residue
+    input_csv = "./compile.txt"  # This txt should contain columns: PDB_ID, Position, Reference_Residue, Mutant_Residue
     pdb_dir = "./downloaded_structures"  # Ensure this directory contains your PDB files
     process_mutations(input_csv, pdb_dir)
