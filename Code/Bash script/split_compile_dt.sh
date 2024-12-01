@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the input file path
-input_file="./processed_subset_dt.txt"
+input_file="./compile.txt"
 
 # Define the output files for each category
 training_benign="./SplitData/training_benign.txt"
