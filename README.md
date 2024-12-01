@@ -8,6 +8,8 @@ the clinical significance of each of the variants, respectively. The columns of 
 
 Let's extract the reference residues, their positions within their protein sequences, and their mutant/alternative residues from HGVSp column. We will append the new columns to the same dataset. Use the python script parse_HGVSp_col.py for this purpose.
 
+Now, we don't need the HGVSp column anymore, let's write a bash script to remove this column. Use the bash script remove_HGVSp_col.sh
+
 Next, let's create a script that will split the output of the above script into four separate text files based on the dataset-classifications and clinical significance of the variants. We will create a bash script that will read the input text file, check the 
 
 conditions for each row, and then append the row to the appropriate out file based on its classification and clinical significance values. 
