@@ -133,7 +133,7 @@ Let's create a new version of the compile dataset and name it compile_v2.txt. Re
 
 Use the script extract_ChainID.py to extract the chain IDs. Add these chain IDs as a new column in the compile dataset using the script add_chain_col.sh. Also, append a new column containing semi-colons as placeholders or delimiters. 
 
-The format of the rows should follow the format: [AF-Q00266-F1-model_v1   P       A       357     L       ;]
+The format of the rows should follow the format: [AF-Q00266-F1-model_v1.pdb   P       A       357     L       ;]
 
 Next, let's create a bash script to split the compile dataset into four separate text files: TestBenign, TestPathogenic, TrianBenign, TrainPathogenic. 
 
@@ -141,3 +141,8 @@ The script will read the compile txt file as input file, check the conditions fo
 
 Rows will be classified based on the dataset labels (Train or Test) and clinical significance (Benign or Pathogenic).
 
+Finally, let's create individual mutation file for each PDB_ID. Use the script split_file_by_category.py to process each of the four input files (TestBenign.txt, TestPathogenic.txt, TrainBenign.txt, and TrainPathogenic.txt) and split their contents into separate output files based on the PDB IDs in the first column. 
+
+The script generates one file for each unique PDB ID, named with the PDB ID followed by _mutations.txt. 
+
+Run FoldX with the BuildModel command.
