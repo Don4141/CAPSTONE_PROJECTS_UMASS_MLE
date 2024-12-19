@@ -145,4 +145,58 @@ Finally, let's create individual mutation file for each PDB_ID. Use the script s
 
 The script generates one file for each unique PDB ID, named with the PDB ID followed by _mutations.txt. 
 
-Run FoldX with the BuildModel command.
+Run FoldX with the BuildModel command. In the run_FoldX.sh script, modify the path and run separately for each of the four datasets. The path should include a folder with PDBs and mutation files.
+
+The output files from running FoldX provides detailed information about the effects of the mutations on the PDB structures. These files include:
+
+Average_*.fxout reports the average ΔΔG (Gibbs free energy change) and other calculated energy terms for each mutation.
+
+Dif_*.fxout: Provides the difference in free energy (ΔΔG) between the wild-type and mutant PDB structures caused by the mutations.
+
+Raw_*.fxout: Provides detailed breakdown of energy components for wild-type and mutant structures.
+
+The content of Raw_*.fxout include:
+
+ - A header line describing the energy terms and categories calculated from each analyzed PDB structure.
+   
+ - Pdb: Name of the analyzed PDB file.
+   
+ - total energy: Overall Gibbs free energy (G) of the structure, combining all components.
+   
+ - Backbone Hbond: Contribution of backbone hydrogen bonding to the energy.
+   
+ - Sidechain Hbond: Contribution of side-chain hydrogen bonding to the energy.
+   
+ - Van der Waals: Contribution from van der Waals interactions.
+   
+ - Electrostatics: Contribution from electrostatic interactions.
+   
+ - Solvation Polar: Energy penalty from polar solvation.
+   
+ - Solvation Hydrophobic: Energy gain from burying hydrophobic residues.
+   
+ - Van der Waals clashes: Energy penalty from steric clashes.
+   
+ - entropy sidechain: Entropic penalty from side-chain flexibility.
+   
+ - entropy mainchain: Entropic penalty from main-chain flexibility.
+   
+ - cis_bond, torsional clash, backbone clash, etc.
+
+Let's write a bash script that will iterate through all the Raw_*.fxout files in a directory of any of the data categories, extract their contents, and write the combined output into a csv file. Use the script combined_raw_files.sh
+
+The output csv file has rows containing energy values for wild-type structures and those for the mutants structures. We will work with the energy information for the mutant structures now. 
+
+Let's write a script that will split the rows in the csv file into two separate csv files: one containing rows with wild-type energy values and the other with information on the mutants.
+
+Use the script split_csv_by_pdb_type.sh. This generates two files named AF_rows.csv (contains mutant energy values) and WT_rows.csv (contains wild-type energy values).
+
+For AF_rows.csv file for each dataset category, let's write a script that will iterate through its mutation files and append the mutations from their _mutations.txt files to the correct rows in the FA_rows.csv, ensuring that the mutations align with their corresponding PDB names. Use the script append_mutations.sh
+
+Next, we will run PositionScan which is another functionality in the FoldX suite. PositionScan systematically analyzes the impact of mutating every possible residue at a specific position in a protein struture. We will run this to understand the effects of the mutations on their PDB structures, and predict the functional consequences of sequence changes in the PDB structures when the mutations are introduced.
+
+Let's run PositionScan for each dataset category with their associated PDBs and *_mutation.txt as input files. Use the script PositionScan.sh
+
+After running PositionScan there will be a number of files to look at. Given output-file="TAG" the output files will inlcude: PS_TAG_scanning_output file containing ΔΔG upon mutation (DDG=DGMut-DGWt).
+ 
+ (=======================Continue===============)
