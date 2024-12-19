@@ -198,5 +198,5 @@ Next, we will run PositionScan which is another functionality in the FoldX suite
 Let's run PositionScan for each dataset category with their associated PDBs and *_mutation.txt as input files. Use the script PositionScan.sh
 
 After running PositionScan there will be a number of files to look at. Given output-file="TAG" the output files will inlcude: PS_TAG_scanning_output file containing ΔΔG upon mutation (DDG=DGMut-DGWt).
- 
- (=======================Continue===============)
+
+PS_TAG_energies.txt containing raw energy calculations for the wild-type residues at each position and the energetic contributions of each mutation analyzed at the position. 
