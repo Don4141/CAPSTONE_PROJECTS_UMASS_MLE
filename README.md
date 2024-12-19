@@ -193,10 +193,12 @@ Use the script split_csv_by_pdb_type.sh. This generates two files named AF_rows.
 
 For AF_rows.csv file for each dataset category, let's write a script that will iterate through its mutation files and append the mutations from their _mutations.txt files to the correct rows in the FA_rows.csv, ensuring that the mutations align with their corresponding PDB names. Use the script append_mutations.sh
 
-Next, we will run PositionScan which is another functionality in the FoldX suite. PositionScan systematically analyzes the impact of mutating every possible residue at a specific position in a protein struture. We will run this to understand the effects of the mutations on their PDB structures, and predict the functional consequences of sequence changes in the PDB structures when the mutations are introduced.
+Next, we will run PositionScan command in the FoldX. This will performs a systematic mutational scan at specified positions in the protein structures and evaluates the energetic effects of the mutations
 
 Let's run PositionScan for each dataset category with their associated PDBs and *_mutation.txt as input files. Use the script PositionScan.sh
 
 After running PositionScan there will be a number of files to look at. Given output-file="TAG" the output files will inlcude: PS_TAG_scanning_output file containing ΔΔG upon mutation (DDG=DGMut-DGWt).
 
-PS_TAG_energies.txt containing raw energy calculations for the wild-type residues at each position and the energetic contributions of each mutation analyzed at the position. 
+energies*.txt file contains detailed information about the energy changes for mutations at the given positions. It contains raw energy calculations for the wild-type residues at each position and the energetic contributions of each mutation analyzed at the position. 
+
+The energies*.txt file consist of rows with energy values for the wild-type and their mutations. 
