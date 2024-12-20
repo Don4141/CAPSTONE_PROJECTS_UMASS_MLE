@@ -201,4 +201,18 @@ After running PositionScan there will be a number of files to look at. Given out
 
 energies*.txt file contains detailed information about the energy changes for mutations at the given positions. It contains raw energy calculations for the wild-type residues at each position and the energetic contributions of each mutation analyzed at the position. 
 
-The energies*.txt file consist of rows with energy values for the wild-type and their mutations. 
+The energies_*.txt file consist of rows with energy values for the wild-types and the mutant types. We have already extracted the energy values of only the mutants from Raw_*.fxout files (output file from the BuildModel command of FoldX). For the energies_*.txt files which has similar energy values as those of Raw_*.fxout files, we calculate the difference between the energy values between the wild-type and the mutants.
+
+Let's write a script to compute this statistics. The output file will retain only the mutation names in the first column as row names. We will name this file combined_energies_differences.csv. Use the script process_energies.py for this task. The output file from this step contains PDB names with the three letter code of the mutations followed by the position of the mutation and separated by an underscore. 
+
+The AF_rows csv file above has PDB names as row names. Let's modify the row names to have similar patterns as those in the combined_energies_differences.csv file. 
+
+For this task, we will take the values in the variant column of the file, convert the last character which is the mutant residue of each value into its three-letter amino acid code, append this three-letter code to the numeric part of the vlaue which is the position of the mutant residue in the PDB structures, separate them by underscore then combine this string with the corresponding value in the first column of the file.
+
+Let's name the output file as modified_AF_rows_with_variants.csv. Use the script rename_mutant_pdb.py for this task.
+
+The row names of modified_AF_rows_with_variants.csv and combined_energies_differences.csv have the same base names. Let's merge these two files based on the base names extracted from the row names, appending the relevant data from combined_energies_differences.csv to modified_AF_rows_with_variants.csv.
+
+The output file should be named based on the category of dataset you're working with. Example, if working with TestBenign.txt dataset, the output file should be named TestBenign.csv. Use merge_files.py for this task.
+
+
