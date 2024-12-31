@@ -1,10 +1,9 @@
 #Capstone projects for Machine Learning Engineering and AI bootcamp at UMASS Global
 
-The original dataset from SIGMA publication has 7 columns, namely HGVSc, HGVSp, Location, SYMBOL, Laste Evaluated, Train_Test Lable, and Class. The first two columns provides information about the variants under study including the coding DNA sequence of variants, and 
+The original dataset from SIGMA publication has 7 columns, namely HGVSc, HGVSp, Location, SYMBOL, Last Evaluated, Train_Test Lable, and Class. The first two columns provides information about the variants under study including the coding DNA sequence of variants, and 
+the protein-level confidence, respectively. The third column is the genomic location of the variants, followed by the gene names associated with the variants. 
 
-the protein-level confidence,respectively. The third column is the genomic location of the variants, followed by the gene names associated with the variants. The last three columns include the dates the variants were recorded, the context in which the data was used and 
-
-the clinical significance of each of the variants, respectively. The columns of interest in this study include HGVSp, the dataset-classifications, their clinical significance, and the gene names. 
+The last three columns include the dates the variants were recorded, the context in which the data was used and the clinical significance of each of the variants, respectively. The columns of interest in this study include HGVSp, the dataset-classifications, their clinical significance, and the gene names. 
 
 Let's extract the reference residues, their positions within their protein sequences, and their mutant/alternative residues from HGVSp column. We will append the new columns to the same dataset. Use the python script parse_HGVSp_col.py for this purpose.
 
