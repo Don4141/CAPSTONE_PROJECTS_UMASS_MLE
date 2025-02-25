@@ -1,0 +1,15 @@
+fastapi
+h5py
+keras
+matplotlib
+numpy 
+pandas
+pydantic
+scikit-learn
+seaborn 
+tensorflow
+uvicorn
+xgboost
+logging
+typing
+
