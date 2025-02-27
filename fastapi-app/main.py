@@ -85,10 +85,10 @@ def train_pipeline():
             # Files are saved in a folder called "data" in my github repo
             # Script is saved in a folder called Web_App in my github repo
     # ---------------------------------------------------------------------------
-    TrainBenign_df = pd.read_csv("../data/TrainBenign.csv")
-    TrainPathogenic_df = pd.read_csv("../data/TrainPathogenic.csv")
+    TrainBenign_df = pd.read_csv("./data/TrainBenign.csv")
+    TrainPathogenic_df = pd.read_csv("./data/TrainPathogenic.csv")
     TestBenign_df = pd.read_csv("../data/TestBenign.csv")
-    TestPathogenic_df = pd.read_csv("../data/TestPathogenic.csv")
+    TestPathogenic_df = pd.read_csv("./data/TestPathogenic.csv")
 
     # ---------------------------------------------------------------------
                     # Drop rows with missing values
