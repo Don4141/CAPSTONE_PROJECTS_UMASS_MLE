@@ -87,7 +87,7 @@ def train_pipeline():
     # ---------------------------------------------------------------------------
     TrainBenign_df = pd.read_csv("./data/TrainBenign.csv")
     TrainPathogenic_df = pd.read_csv("./data/TrainPathogenic.csv")
-    TestBenign_df = pd.read_csv("../data/TestBenign.csv")
+    TestBenign_df = pd.read_csv("./data/TestBenign.csv")
     TestPathogenic_df = pd.read_csv("./data/TestPathogenic.csv")
 
     # ---------------------------------------------------------------------
