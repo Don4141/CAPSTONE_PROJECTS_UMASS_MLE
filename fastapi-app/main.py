@@ -274,7 +274,7 @@ def predict(input_data: PredictionInput):
     encoded_input = encoder_layer.predict(scaled_input)
     encoded_df = pd.DataFrame(encoded_input, columns=[f"feature_{i}" for i in range(encoded_input.shape[1])])
     reduced_input = encoded_df.drop(columns=cols_to_drop, errors='ignore')
-    prediction = int(xg_clf.predict(reduced_input)[0])
+    prediction = int(xgb_clf.predict(reduced_input)[0])
     return {"prediction": prediction}
 
 # -----------------------------------------------------------------------------------------------------------
