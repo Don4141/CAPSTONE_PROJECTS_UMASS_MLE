@@ -48,7 +48,7 @@ st.markdown(
 # ----------------------------------------------------------------------------------------------------------------------------
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
-    st.image("./Protein.jpg", caption="Protein Image")
+    st.image("Streamlit-app/Protein.jpg", caption="Example of Missense Variant")
 
 # ----------------------------------------------------------------------------------------------------------------------------
                          # ----------- Backend URL (Render) where the FastAPI server is running ------------#
