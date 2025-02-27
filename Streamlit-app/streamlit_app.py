@@ -13,7 +13,7 @@ def get_base64_of_bin_file(bin_file):
 # ----------------------------------------------------------------------------------------------------------------------------
                        # --------- Setting path for protein image to be displayed on the webpage ----------
 # ----------------------------------------------------------------------------------------------------------------------------
-page_icon = get_base64_of_bin_file("Protein.jpg")
+page_icon = get_base64_of_bin_file("https://github.com/Don4141/CAPSTONE_PROJECTS_UMASS_MLE/blob/main/Streamlit-app/Protein.jpg")
 st.set_page_config(
     page_title="Predicting Clinical Relevance of Missense Mutations with Machine Learning and Protein Structural Information",
     page_icon=f"data:image/jpeg;base64,{page_icon}",
