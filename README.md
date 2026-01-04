@@ -1,3 +1,6 @@
+![Python](https://img.shields.io/badge/Python-3.9+-blue)
+![ML](https://img.shields.io/badge/Machine%20Learning-XGBoost%20%7C%20Keras-green)
+
 # Structure-Informed Prediction of Missense Variant Pathogenicity
 
 ### Overview
@@ -7,7 +10,7 @@ The pipeline dynamically generates mutation-specific structural energy features 
 Pipeline
 
 The workflow consists of five modular stages:
-1. ### Data Preparation
+### 1. Data Preparation
 
 	Input variants sourced from ClinVar-labeled benign/pathogenic datasets.
 
@@ -15,7 +18,7 @@ The workflow consists of five modular stages:
 
 	Variants split into Train/Test × Benign/Pathogenic subsets using predefined dataset labels.
 
-2. ### Structure Resolution
+### 2. Structure Resolution
 
 	Gene symbols resolved to UniProt accession IDs.
 
@@ -23,7 +26,7 @@ The workflow consists of five modular stages:
 
 	Variants mapped to corresponding protein structures.
 
-3. ### Feature Engineering (Structural)
+### 3. Feature Engineering (Structural)
 
 	FoldX BuildModel used to compute mutation-induced stability changes (ΔΔG).
 
@@ -33,7 +36,7 @@ The workflow consists of five modular stages:
 
 	Wild-type and mutant energies aligned and differenced to produce final features.
 
-4. ### Model Training & Evaluation
+### 4. Model Training & Evaluation
 
 	Dimensionality reduction performed using an autoencoder (TensorFlow/Keras).
 
@@ -43,7 +46,7 @@ The workflow consists of five modular stages:
 
 	Feature importance analyzed to assess biological interpretability.
 
-5. ### Inference & Deployment
+### 5. Inference & Deployment
 
 	Trained model artifacts versioned and loaded by a FastAPI backend.
 
@@ -67,30 +70,29 @@ Feature importance analysis confirms that structurally meaningful variables driv
 This project is deployed as a two-tier applied ML system separating inference logic from user interaction.
 
 ### Architecture Diagram (Conceptual)
-
-+--------------------------+
++--------------------+
 |   Streamlit UI     |
-| (User Interface) |
+|  (User Interface)  |
 +---------+----------+
           |
           | HTTP POST (JSON)
           v
 +---------+----------+
-|   FastAPI Backend |
-| - Input validation|
-| - Preprocessing   |
-| - Autoencoder     |
-| - XGBoost model   |
+|   FastAPI Backend  |
+|  - Input validation|
+|  - Preprocessing   |
+|  - Autoencoder     |
+|  - XGBoost model   |
 +---------+----------+
           |
           | Prediction (JSON)
           v
-+--------------------------------------+
-| Model Artifacts   |
-| (versioned files) |
-+--------------------------------------+
++--------------------+
+|  Model Artifacts   |
+| (versioned files)  |
++--------------------+
 
-## System Components
+### System Components
 ### FastAPI Backend (Render)
 	Validates inputs using Pydantic schemas.
 
