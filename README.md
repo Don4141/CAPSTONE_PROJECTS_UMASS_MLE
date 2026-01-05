@@ -6,7 +6,7 @@
 </p>
 
 
-# Structure-Informed Prediction of Missense Variant Pathogenicity
+# Predicting Clinical Relevance of Missense Mutations with Machine Learning and Protein Structural Information
 
 ### Overview
 
@@ -65,6 +65,7 @@ The final model demonstrates strong discriminative performance in classifying mi
 	AUROC: ~0.93 on labeled test data
 
 	Accuracy: ~0.85 
+
 	Independent validation: High Spearman correlation with functional scores from deep mutational scanning experiments
 
 	Key contributors: Relative solvent accessibility and mutation-induced stability changes (ΔΔG)
