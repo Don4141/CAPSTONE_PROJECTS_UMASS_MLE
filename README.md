@@ -1,13 +1,19 @@
 ![Python](https://img.shields.io/badge/Python-3.9+-blue)
 ![ML](https://img.shields.io/badge/Machine%20Learning-XGBoost%20%7C%20Keras-green)
 
+<p align="center">
+  <img src="figures/missense_structure.jpg" width="600">
+</p>
+
+
 # Structure-Informed Prediction of Missense Variant Pathogenicity
 
 ### Overview
 
 This project implements an end-to-end applied machine learning system for predicting the pathogenicity of human missense variants using protein structural information derived from AlphaFold-predicted 3D structures. The motivation is to overcome the limitations of existing variant-effect predictors that rely on static, precomputed scores and cannot evaluate previously uncharacterized variants.
 The pipeline dynamically generates mutation-specific structural energy features using FoldX, constructs a reproducible feature matrix, and trains supervised ML models to classify variants as benign or pathogenic. The system is designed with a strong emphasis on reproducibility, scalability, model interpretability, and deployability, culminating in a production-grade web application built with FastAPI and Streamlit.
-Pipeline
+
+### Pipeline
 
 The workflow consists of five modular stages:
 ### 1. Data Preparation
@@ -112,28 +118,28 @@ This project is deployed as a two-tier applied ML system separating inference lo
 
 	Versioned for reproducibility and rollback.
 
-## 1. Create environment
+### 1. Create environment
 conda env create -f environment.yml
 
 conda activate sigma-ml
 
-## 2. Prepare variant datasets
+### 2. Prepare variant datasets
 python parse_HGVSp_col.py
 
 bash remove_HGVSp_col.sh
 
-## 3. Download AlphaFold structures
+### 3. Download AlphaFold structures
 python fetch_uniprot_ids.py
 
 python download_alphafold_pdbs.py
 
-## 4. Run FoldX feature generation
+### 4. Run FoldX feature generation
 bash run_FoldX.sh
 
-## 5. Train and evaluate model
+### 5. Train and evaluate model
 python train_model.py
 
-## 6. Launch frontend (optional)
+### 6. Launch frontend (optional)
 streamlit run app.py
 
 ### Limitations
