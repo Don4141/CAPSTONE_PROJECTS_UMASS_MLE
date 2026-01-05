@@ -76,6 +76,7 @@ Feature importance analysis confirms that structurally meaningful variables driv
 This project is deployed as a two-tier applied ML system separating inference logic from user interaction.
 
 ### Architecture Diagram (Conceptual)
+```test
 +--------------------+
 |   Streamlit UI     |
 |  (User Interface)  |
@@ -97,6 +98,7 @@ This project is deployed as a two-tier applied ML system separating inference lo
 |  Model Artifacts   |
 | (versioned files)  |
 +--------------------+
+```
 
 ### System Components
 ### FastAPI Backend (Render)
